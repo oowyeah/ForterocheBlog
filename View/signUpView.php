@@ -6,7 +6,7 @@ ob_start();
 ?>
 <main>
 	<?php
-	if(!$isConnected)
+	if(!$whoIsConnected)
 	{
 		?>
 

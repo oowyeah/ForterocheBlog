@@ -19,10 +19,18 @@
                     <li>Acceuil</li>
                     <li>Chapitres</li>
                     <li>Contact</li>
-                    <?php 
-                    if(isset($isConnected))
+                    <?php
+                    if(isset($whoIsConnected))
                     {
-                        if(!$isConnected) {
+                        if($whoIsConnected == 'admin') {
+                            ?>
+                            <li><a href="index.php?action=dashBoard">Tableau de bord</a></li>
+                            <?php
+                        } 
+                    }
+                    if(isset($whoIsConnected))
+                    {
+                        if(!$whoIsConnected) {
                             ?>
                             <li><a href="index.php?action=signInPage">Connexion</a></li>
                             <?php
@@ -33,7 +41,9 @@
                             <li><a href="index.php?action=signOut">Déconnexion</a></li>
                             <?php                        
                         }  
-                    } 
+                    }
+             
+
                     ?>
                 </ul>
             </nav>

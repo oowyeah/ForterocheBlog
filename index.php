@@ -63,6 +63,45 @@ try {
 				throw new Exception("Veuillez remplir tous les champs !");
 			}
 		}
+		elseif($_GET['action'] == "dashBoard")
+		{
+			if(isset($_GET['message']))
+			{
+				$messageCode = $_GET['message'];
+				dashBoard($messageCode);
+			}
+			else
+			{
+				dashBoard(null);
+			}
+		}
+		elseif($_GET['action'] == "newChapter")
+		{
+			newChapter();
+		}
+		elseif($_GET['action'] == "addChapter")
+		{
+			if(isset($_POST['title']) && isset($_POST['content']))
+			{
+				if(!empty($_POST['title']) && !empty($_POST['content']))
+				{
+					$postData = array(
+						'title' => $_POST['title'],
+						'content' => $_POST['content']
+					);
+
+					addChapter($postData);
+				}
+				else
+				{
+					throw new Exception("Veuillez remplir tous les champs !");
+				}
+			}
+			else
+			{
+				throw new Exception("Veuillez remplir tous les champs !");
+			}
+		}
 	}
 	else
 	{	if(isset($_GET['message']))

@@ -1,24 +1,21 @@
 <?php
 
 require_once("Model/UsersManager.php");
+require_once("Model/ChaptersManager.php");
 
-function isConnected()
+function whoIsConnected()
 {
 	session_start();
 	if(isset($_SESSION['username']) && isset($_SESSION['admin']))
 	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-function isAdmin()
-{
-	if(isConnected() && $_SESSION['admin'] == 1)
-	{
-		return true;
+		if($_SESSION['admin'] == 1)
+		{
+			return 'admin';
+		}
+		else
+		{
+			return 'user';
+		}
 	}
 	else
 	{
@@ -36,13 +33,16 @@ function getMessage($messageCode)
 	        break;
 	    case 2:
 	        return "Inscription réussie !";
+	        break;
+	    case 3:
+	        return "Chapitre ajouté !";
 	        break;	   
 	}
 }
 
 function homeView($messageCode)
 {
-	$isConnected = isConnected();
+	$whoIsConnected = whoIsConnected();
 
 	if(isset($messageCode))
 	{
@@ -53,7 +53,7 @@ function homeView($messageCode)
 
 function signInPage()
 {
-	$isConnected = isConnected();
+	$whoIsConnected = whoIsConnected();
 	require('View/signInView.php');
 }
 
@@ -96,7 +96,7 @@ function signOut()
 }
 function signUpPage()
 {
-	$isConnected = isConnected();
+	$whoIsConnected = whoIsConnected();
 	require('View/signUpView.php');
 }
 function signUp($postData)
@@ -123,7 +123,36 @@ function signUp($postData)
 		}
 	}
 }
+function dashBoard($messageCode)
+{
+	if(isset($messageCode))
+	{
+		$message = getMessage($messageCode);
+	}
 
+	$whoIsConnected = whoIsConnected();
+	require('View/dashBoardView.php');
+}
+function newChapter()
+{
+	$whoIsConnected = whoIsConnected();
+	require('View/newChapterView.php');
+}
+function addChapter($postData)
+{
+	$chaptersManager = new ChaptersManager();
+	$postData['title'] = strip_tags($postData['title']);
+	$addedLines = $chaptersManager->addChapter($postData);
+	if($addedLines->rowCount())
+	{
+		header('Location: index.php?action=dashBoard&message=3');
+	}
+	else
+	{
+		throw new Exception("Il y a eu un problème lors de l'ajout du chapitre !");
+	}
+
+}
 
 function showError($error)
 {
