@@ -37,7 +37,10 @@ class ChaptersManager extends Manager
 	public function removeChapter($chapterId)
 	{
 		$db = $this->dbConnect();
-		$req = $db->prepare('DELETE FROM chapters WHERE id = ?');
+		$req = $db->prepare('	DELETE chapters, comments FROM chapters 
+								LEFT JOIN comments
+								ON comments.chapterId = chapters.id 
+								WHERE chapters.id = ?');
 		$req->execute(array($chapterId));
 		return $req;
 	}
