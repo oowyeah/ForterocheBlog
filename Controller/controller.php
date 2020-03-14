@@ -2,6 +2,7 @@
 
 require_once("Model/UsersManager.php");
 require_once("Model/ChaptersManager.php");
+require_once("Model/CommentsManager.php");
 
 function whoIsConnected()
 {
@@ -46,7 +47,13 @@ function getMessage($messageCode)
 	        break;
 	    case 5:
 	        return "Chapitre supprimé !";
-	        break;	   
+	        break;
+	    case 6:
+	        return "Commentaire autorisé !";
+	        break;
+	    case 7:
+	        return "Commentaire supprimé !";
+	        break;		        	   
 	}
 }
 
@@ -226,6 +233,60 @@ function removeChapter($chapterId)
 		else
 		{
 			throw new Exception("Il y a eu un problème lors de la suppression du chapitre !");
+		}
+	}
+	else
+	{
+		throw new Exception("Vous devez être administrateur pour effectuer cette opération !");
+	}
+}
+function reportedComments($messageCode)
+{
+	if(isset($messageCode))
+	{
+		$message = getMessage($messageCode);
+	}
+
+	$whoIsConnected = whoIsConnected();
+	$commentsManager = new CommentsManager();
+	$reportedComments = $commentsManager->getReportedComments();
+	require('View/reportedCommentsView.php');
+}
+function allowComment($commentId)
+{
+	$whoIsConnected = whoIsConnected();
+	$commentsManager = new CommentsManager();
+	if($whoIsConnected == "admin")
+	{
+		$allowedComment = $commentsManager->updateStatus($commentId, 0);
+		if($allowedComment->rowCount())
+		{
+			header('Location: index.php?action=reportedComments&message=6');
+		}
+		else
+		{
+			throw new Exception("Il y a eu un problème lors de l'autorisation du commentaire !");
+		}
+	}
+	else
+	{
+		throw new Exception("Vous devez être administrateur pour effectuer cette opération !");
+	}
+}
+function removeComment($commentId)
+{
+	$whoIsConnected = whoIsConnected();
+	$commentsManager = new CommentsManager();
+	if($whoIsConnected == "admin")
+	{
+		$removedLine = $commentsManager->removeComment($commentId);
+		if($removedLine->rowCount())
+		{
+			header('Location: index.php?action=reportedComments&message=7');
+		}
+		else
+		{
+			throw new Exception("Il y a eu un problème lors de la suppression du commentaire !");
 		}
 	}
 	else

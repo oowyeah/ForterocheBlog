@@ -147,6 +147,27 @@ try {
 		{
 			removeChapter($_GET['chapterId']);
 		}
+		elseif($_GET['action'] == "reportedComments")
+		{	
+			if(isset($_GET['message']))
+			{
+				$messageCode = $_GET['message'];
+				reportedComments($messageCode);
+			}
+
+			else
+			{
+				reportedComments(null);
+			}
+		}
+		elseif($_GET['action'] == "allowComment" && isset($_GET['commentId']))
+		{
+			allowComment($_GET['commentId']);
+		}
+		elseif($_GET['action'] == "removeComment" && isset($_GET['commentId']))
+		{
+			removeComment($_GET['commentId']);
+		}
 	}
 	else
 	{	if(isset($_GET['message']))

@@ -58,7 +58,7 @@ ob_start();
 
 			?>
 
-			<p>Il n'y pas d'épisodes pour le moment</p>
+			<p>Il n'y pas de chapitres pour le moment</p>
 
 			<?php
 
