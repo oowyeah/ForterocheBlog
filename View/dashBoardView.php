@@ -13,8 +13,7 @@ ob_start();
         <nav id="dashBoard">
             <ul>
                 <a href="index.php?action=newChapter"><li>Ajouter un chapitre</li></a>
-                <li>Supprimer un chapitre</li>
-                <li>Modifier un chapitre</li>
+                <a href="index.php?action=editRemChapters"><li>Modifier ou Supprimer un chapitre</li></a>
                 <li>Modérer les commentaires</li>
                 <li>Ajouter un compte administrateur</li>
                 <li>Modifier mes informations de contact</li>

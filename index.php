@@ -102,6 +102,47 @@ try {
 				throw new Exception("Veuillez remplir tous les champs !");
 			}
 		}
+		elseif($_GET['action'] == "editRemChapters")
+		{
+			if(isset($_GET['message']))
+			{
+				$messageCode = $_GET['message'];
+				editRemChapters($messageCode);
+			}
+
+			else
+			{
+				editRemChapters(null);
+			}
+		}
+		elseif($_GET['action'] == "editChapter" && isset($_GET['chapterId']))
+		{
+			editChapter($_GET['chapterId']);
+		}
+		elseif($_GET['action'] == "updateChapter" && isset($_GET['chapterId']))
+		{
+			if(isset($_POST['title']) && isset($_POST['content']))
+			{
+				if(!empty($_POST['title']) && !empty($_POST['content']))
+				{
+					$postData = array(
+						'title' => $_POST['title'],
+						'content' => $_POST['content'],
+						'id' => $_GET['chapterId']
+					);
+
+					updateChapter($postData);
+				}
+				else
+				{
+					throw new Exception("Veuillez remplir tous les champs !");
+				}
+			}
+			else
+			{
+				throw new Exception("Veuillez remplir tous les champs !");
+			}
+		}
 	}
 	else
 	{	if(isset($_GET['message']))

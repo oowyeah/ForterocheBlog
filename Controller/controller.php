@@ -36,6 +36,9 @@ function getMessage($messageCode)
 	        break;
 	    case 3:
 	        return "Chapitre ajouté !";
+	        break;
+	    case 4:
+	        return "Chapitre modifié !";
 	        break;	   
 	}
 }
@@ -153,9 +156,43 @@ function addChapter($postData)
 	}
 
 }
+function editRemChapters($messageCode)
+{
+	if(isset($messageCode))
+	{
+		$message = getMessage($messageCode);
+	}
 
+	$whoIsConnected = whoIsConnected();
+	$chaptersManager = new ChaptersManager();
+	$chapters = $chaptersManager->getChaptersList();
+	require('View/editRemChaptersView.php');
+}
+function editChapter($chapterId)
+{
+	$whoIsConnected = whoIsConnected();
+	$chaptersManager = new ChaptersManager();
+	$chapter = $chaptersManager->getChapter($chapterId);
+	require('View/editChapterView.php');
+}
+function updateChapter($postData)
+{
+	$chaptersManager = new ChaptersManager();
+	$postData['title'] = strip_tags($postData['title']);
+	$addedLines = $chaptersManager->UpdateChapter($postData);
+	if($addedLines->rowCount())
+	{
+		header('Location: index.php?action=editRemChapters&message=4');
+	}
+	else
+	{
+		throw new Exception("Il y a eu un problème lors de la modification du chapitre ! Ou vous n'avez pas modifié le chapitre !");
+	}
+
+}
 function showError($error)
 {
+	$whoIsConnected = whoIsConnected();
 	$error = $error;
 	require('View/errorView.php');
 }
