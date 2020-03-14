@@ -143,6 +143,10 @@ try {
 				throw new Exception("Veuillez remplir tous les champs !");
 			}
 		}
+		elseif($_GET['action'] == "removeChapter" && isset($_GET['chapterId']))
+		{
+			removeChapter($_GET['chapterId']);
+		}
 	}
 	else
 	{	if(isset($_GET['message']))

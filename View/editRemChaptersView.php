@@ -38,7 +38,7 @@ ob_start();
 							<a href="index.php?action=editChapter&chapterId=<?= $db_data['id'] ?>">Editer</a>
 						</div>
 						<div class="removeButton">
-							Supprimer
+							<a href="index.php?action=removeChapter&chapterId=<?= $db_data['id'] ?>">Supprimer</a>
 						</div>
 					</div>
 				</div>

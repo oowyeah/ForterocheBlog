@@ -5,7 +5,11 @@ require_once("Model/ChaptersManager.php");
 
 function whoIsConnected()
 {
-	session_start();
+	if(session_status() == PHP_SESSION_NONE)
+	{
+		session_start();
+	}
+
 	if(isset($_SESSION['username']) && isset($_SESSION['admin']))
 	{
 		if($_SESSION['admin'] == 1)
@@ -39,6 +43,9 @@ function getMessage($messageCode)
 	        break;
 	    case 4:
 	        return "Chapitre modifié !";
+	        break;
+	    case 5:
+	        return "Chapitre supprimé !";
 	        break;	   
 	}
 }
@@ -143,18 +150,25 @@ function newChapter()
 }
 function addChapter($postData)
 {
+	$whoIsConnected = whoIsConnected();
 	$chaptersManager = new ChaptersManager();
 	$postData['title'] = strip_tags($postData['title']);
-	$addedLines = $chaptersManager->addChapter($postData);
-	if($addedLines->rowCount())
+	if($whoIsConnected == "admin")
 	{
-		header('Location: index.php?action=dashBoard&message=3');
+		$addedLines = $chaptersManager->addChapter($postData);
+		if($addedLines->rowCount())
+		{
+			header('Location: index.php?action=dashBoard&message=3');
+		}
+		else
+		{
+			throw new Exception("Il y a eu un problème lors de l'ajout du chapitre !");
+		}
 	}
 	else
 	{
-		throw new Exception("Il y a eu un problème lors de l'ajout du chapitre !");
+		throw new Exception("Vous devez être administrateur pour effectuer cette opération !");
 	}
-
 }
 function editRemChapters($messageCode)
 {
@@ -177,22 +191,53 @@ function editChapter($chapterId)
 }
 function updateChapter($postData)
 {
+	$whoIsConnected = whoIsConnected();
 	$chaptersManager = new ChaptersManager();
 	$postData['title'] = strip_tags($postData['title']);
-	$addedLines = $chaptersManager->UpdateChapter($postData);
-	if($addedLines->rowCount())
+	if($whoIsConnected == "admin")
 	{
-		header('Location: index.php?action=editRemChapters&message=4');
+		$addedLines = $chaptersManager->UpdateChapter($postData);
+		if($addedLines->rowCount())
+		{
+			header('Location: index.php?action=editRemChapters&message=4');
+		}
+		else
+		{
+			throw new Exception("Il y a eu un problème lors de la modification du chapitre ! Ou vous n'avez pas modifié le chapitre !");
+		}
 	}
 	else
 	{
-		throw new Exception("Il y a eu un problème lors de la modification du chapitre ! Ou vous n'avez pas modifié le chapitre !");
+		throw new Exception("Vous devez être administrateur pour effectuer cette opération !");
 	}
 
 }
-function showError($error)
+function removeChapter($chapterId)
 {
 	$whoIsConnected = whoIsConnected();
+	$chaptersManager = new ChaptersManager();
+	if($whoIsConnected == "admin")
+	{
+		$removedLine = $chaptersManager->removeChapter($chapterId);
+		if($removedLine->rowCount())
+		{
+			header('Location: index.php?action=editRemChapters&message=5');
+		}
+		else
+		{
+			throw new Exception("Il y a eu un problème lors de la suppression du chapitre !");
+		}
+	}
+	else
+	{
+		throw new Exception("Vous devez être administrateur pour effectuer cette opération !");
+	}
+}
+function showError($error)
+{
+
+	$whoIsConnected = whoIsConnected();
+
 	$error = $error;
 	require('View/errorView.php');
 }

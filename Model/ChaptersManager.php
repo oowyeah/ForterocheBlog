@@ -34,4 +34,11 @@ class ChaptersManager extends Manager
 		$req->execute(array($postData['title'], $postData['content'], $postData['id']));
 		return $req;
 	}
+	public function removeChapter($chapterId)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('DELETE FROM chapters WHERE id = ?');
+		$req->execute(array($chapterId));
+		return $req;
+	}
 }
