@@ -172,6 +172,10 @@ try {
 		{
 			chaptersList();
 		}
+		elseif($_GET['action'] == "singleChapter" && isset($_GET['chapterId']))
+		{
+			singleChapter($_GET['chapterId']);
+		}
 	}
 	else
 	{	if(isset($_GET['message']))

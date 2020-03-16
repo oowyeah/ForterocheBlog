@@ -41,7 +41,7 @@ ob_start();
 
 				</div>
 				<div class="ReadButton">
-					<a>Lire la suite</a>
+					<a href="index.php?action=singleChapter&chapterId=<?= $db_data['id'] ?>">Lire la suite</a>
 				</div>
 			</div>
 

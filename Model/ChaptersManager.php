@@ -20,7 +20,7 @@ class ChaptersManager extends Manager
 	public function getChapter($chapterId)
 	{
 		$db = $this->dbConnect();
-		$req = $db->prepare('	SELECT id, title, content FROM chapters
+		$req = $db->prepare('	SELECT id, title, content, date FROM chapters
 								WHERE id = ?');
 		$req->execute(array($chapterId));
 		return $req;

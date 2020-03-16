@@ -302,6 +302,28 @@ function chaptersList()
 	$chapters = $chaptersManager->getChaptersList();
 	require('View/ChaptersView.php');
 }
+function singleChapter($chapterId)
+{
+
+	$whoIsConnected = whoIsConnected();
+	$chaptersManager = new ChaptersManager();
+	$chapter = $chaptersManager->getChapter($chapterId);
+	$chapters = $chaptersManager->getChaptersList();
+	$chapterNumber = 1;
+	while($data = $chapters->fetch())
+	{
+		if($data['id'] == $chapterId)
+		{
+			break;
+		}
+		else
+		{
+			$chapterNumber++;
+		}
+	}
+
+	require('View/singleChapterView.php');
+}
 function showError($error)
 {
 
