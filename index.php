@@ -168,6 +168,10 @@ try {
 		{
 			removeComment($_GET['commentId']);
 		}
+		elseif($_GET['action'] == "chaptersList")
+		{
+			chaptersList();
+		}
 	}
 	else
 	{	if(isset($_GET['message']))

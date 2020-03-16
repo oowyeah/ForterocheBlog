@@ -294,6 +294,14 @@ function removeComment($commentId)
 		throw new Exception("Vous devez être administrateur pour effectuer cette opération !");
 	}
 }
+function chaptersList()
+{
+
+	$whoIsConnected = whoIsConnected();
+	$chaptersManager = new ChaptersManager();
+	$chapters = $chaptersManager->getChaptersList();
+	require('View/ChaptersView.php');
+}
 function showError($error)
 {
 

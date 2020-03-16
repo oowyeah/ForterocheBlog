@@ -16,8 +16,8 @@
             <h1>Blog de Jean Forteroche - Ecrivain</h1>
             <nav>
                 <ul>
-                    <li>Acceuil</li>
-                    <li>Chapitres</li>
+                    <li><a href="index.php">Acceuil</a></li>
+                    <li><a href="index.php?action=chaptersList">Chapitres</a></li>
                     <li>Contact</li>
                     <?php
                     if(isset($whoIsConnected))
