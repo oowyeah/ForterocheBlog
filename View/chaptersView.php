@@ -29,15 +29,23 @@ ob_start();
 				<h3>Chapitre <?= $chapterNumber ?> - <?= $db_data['title'] ?></h3>
 				<div class="content">
 					<?php
-
-					while(str_word_count($db_data['content']) >= 30)
+					if(str_word_count($db_data['content']) >= 30)
 					{
-						$db_data['content'] = substr($db_data['content'], 0, -1);
+
+						while(str_word_count($db_data['content']) >= 30)
+						{
+							$db_data['content'] = substr($db_data['content'], 0, -1);
+						}
+
+						echo $db_data['content'] . "(...)</p>";
 					}
-
+					else
+					{
+						?>
+						<?= $db_data['content'] ?>
+						<?php
+					}
 					?>
-
-					<?= $db_data['content'] . "(...)" ?>
 
 				</div>
 				<div class="ReadButton">

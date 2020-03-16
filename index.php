@@ -174,7 +174,40 @@ try {
 		}
 		elseif($_GET['action'] == "singleChapter" && isset($_GET['chapterId']))
 		{
-			singleChapter($_GET['chapterId']);
+			if(isset($_GET['message']))
+			{
+				$messageCode = $_GET['message'];
+				singleChapter($_GET['chapterId'], $messageCode);
+			}
+			else
+			{
+				singleChapter($_GET['chapterId'], null);
+			}
+		}
+		elseif($_GET['action'] == "postComment")
+		{
+
+			if(isset($_POST['content']) && isset($_GET['chapterId']))
+			{
+				if(!empty($_POST['content']) && !empty($_GET['chapterId']))
+				{
+					$postData = array(
+						'content' => $_POST['content'],
+						'chapterId' => $_GET['chapterId'],
+						'userId' => null
+					);
+
+					postComment($postData);
+				}
+				else
+				{
+					throw new Exception("Veuillez saisir un commentaire !");
+				}
+			}
+			else
+			{
+				throw new Exception("Veuillez saisir un commentaire !");
+			}
 		}
 	}
 	else

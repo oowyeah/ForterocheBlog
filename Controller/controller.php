@@ -53,7 +53,10 @@ function getMessage($messageCode)
 	        break;
 	    case 7:
 	        return "Commentaire supprimé !";
-	        break;		        	   
+	        break;	
+	    case 8:
+	        return "Commentaire ajouté !";
+	        break;	        	   
 	}
 }
 
@@ -302,10 +305,16 @@ function chaptersList()
 	$chapters = $chaptersManager->getChaptersList();
 	require('View/ChaptersView.php');
 }
-function singleChapter($chapterId)
+function singleChapter($chapterId, $messageCode)
 {
+	if(isset($messageCode))
+	{
+		$message = getMessage($messageCode);
+	}
 
 	$whoIsConnected = whoIsConnected();
+	$commentsManager = new CommentsManager();
+	$lastComments = $commentsManager->getLastComments($chapterId, 5);
 	$chaptersManager = new ChaptersManager();
 	$chapter = $chaptersManager->getChapter($chapterId);
 	$chapters = $chaptersManager->getChaptersList();
@@ -323,6 +332,36 @@ function singleChapter($chapterId)
 	}
 
 	require('View/singleChapterView.php');
+}
+function postComment($postData)
+{
+
+	$whoIsConnected = whoIsConnected();
+	$usersManager = new UsersManager();
+	$commentsManager = new CommentsManager();
+	$user = $usersManager->getLogin(array('username' => $_SESSION['username']));
+	$data = $user->fetch();
+	$userId = $data['id'];
+
+	$postData['userId'] = $userId;
+	$postData['content'] = strip_tags($postData['content']);
+
+	if($whoIsConnected == "admin" || $whoIsConnected == "user")
+	{
+		$addedLines = $commentsManager->addComment($postData);
+		if($addedLines->rowCount())
+		{
+			header("Location: index.php?action=singleChapter&chapterId=" .$postData['chapterId'] . "&message=8");
+		}
+		else
+		{
+			throw new Exception("Il y a eu un problème lors de l'ajout du commentaire !");
+		}
+	}
+	else
+	{
+		throw new Exception("Vous n'avez pas l'autorisation d'effectuer cette opération !");
+	}
 }
 function showError($error)
 {

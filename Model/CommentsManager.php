@@ -30,5 +30,25 @@ class CommentsManager extends Manager
 		return $req;
 	
 	}
+	public function getLastComments($chapterId, $commentsNbr)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('	SELECT c.id commentId, c.userId, u.userName, c.chapterId, c.date, c.content
+								FROM comments c
+								INNER JOIN users u
+								ON c.userId = u.id
+								WHERE c.chapterId = ?
+								ORDER BY commentId DESC LIMIT ' .$commentsNbr);
+		$req->execute(array($chapterId));
+		return $req;
+	}
+	public function addComment($postData)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('	INSERT INTO comments (userId, chapterId, content, date)
+								VALUES(?, ?, ?, NOW())');
+		$req->execute(array($postData['userId'], $postData['chapterId'], $postData['content'])) or die('problem');
+		return $req;
+	}
 }
 
