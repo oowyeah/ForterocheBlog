@@ -43,7 +43,13 @@ if($chapter->rowCount())
 						<fieldset>
 							<legend><h4><?= $db_data['userName'] ?> le <?= $db_data['date'] ?></h4></legend>
 							<p><?= $db_data['content'] ?></p>
-							<p><a>Signaler</a></p>
+							<?php
+							if($whoIsConnected) {
+								?>
+								<p><a href="index.php?action=reportComment&commentId=<?= $db_data['commentId'] ?>&from=chapterView&chapterId=<?= $id ?>">Signaler</a></p>
+								<?php
+							}
+							?>
 						</fieldset>
 					</div>
 					

@@ -221,6 +221,10 @@ try {
 				listComments($_GET['chapterId'], null);
 			}
 		}
+		elseif($_GET['action'] == "reportComment" && isset($_GET['commentId']) && isset($_GET['from']) && isset($_GET['chapterId']))
+		{
+			reportComment($_GET['commentId'], $_GET['from']);
+		}
 	}
 	else
 	{	if(isset($_GET['message']))

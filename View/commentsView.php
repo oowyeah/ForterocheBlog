@@ -4,6 +4,7 @@ if($chapter->rowCount())
 {
 	$db_data = $chapter->fetch();
 	$title = 'Chapitre ' . $chapterNumber . ' - ' . $db_data['title'];
+	$id = $db_data['id'];
 
 	ob_start();
 
@@ -40,7 +41,14 @@ if($chapter->rowCount())
 						<fieldset>
 							<legend><h4><?= $db_data['userName'] ?> le <?= $db_data['date'] ?></h4></legend>
 							<p><?= $db_data['content'] ?></p>
-							<p><a>Signaler</a></p>
+							<?php
+							if($whoIsConnected)
+							{
+								?>
+								<p><a href="index.php?action=reportComment&commentId=<?= $db_data['commentId'] ?>&from=commentsView&chapterId=<?= $id ?>">Signaler</a></p>
+								<?php
+							}
+							?>
 						</fieldset>
 					</div>
 

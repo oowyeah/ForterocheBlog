@@ -56,10 +56,12 @@ function getMessage($messageCode)
 	        break;	
 	    case 8:
 	        return "Commentaire ajouté !";
+	        break;
+	    case 9:
+	        return "Commentaire signalé !";
 	        break;	        	   
 	}
 }
-
 function homeView($messageCode)
 {
 	$whoIsConnected = whoIsConnected();
@@ -401,6 +403,34 @@ function listComments($chapterId, $messageCode)
 	}
 
 	require('View/commentsView.php');
+}
+function reportComment($commentId, $from)
+{
+	$whoIsConnected = whoIsConnected();
+	$commentsManager = new CommentsManager();
+	if($whoIsConnected == "admin" || $whoIsConnected == "user")
+	{
+		$reportedComment = $commentsManager->updateStatus($commentId, 1);
+		if($reportedComment->rowCount())
+		{
+			if($from == "chapterView")
+			{
+				header("Location: index.php?action=singleChapter&chapterId=" .$_GET['chapterId'] . "&message=9");
+			}
+			elseif($from == "commentsView")
+			{
+				header("Location: index.php?action=listComments&chapterId=" .$_GET['chapterId'] . "&message=9");
+			}
+		}
+		else
+		{
+			throw new Exception("Il y a eu un problème lors de l'autorisation du commentaire !");
+		}
+	}
+	else
+	{
+		throw new Exception("Vous devez être connecté pour effectuer cette opération !");
+	}
 }
 function showError($error)
 {
