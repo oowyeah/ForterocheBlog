@@ -42,6 +42,18 @@ class CommentsManager extends Manager
 		$req->execute(array($chapterId));
 		return $req;
 	}
+	public function getComments($chapterId)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('	SELECT c.id commentId, c.userId, u.userName, c.chapterId, c.date, c.content
+								FROM comments c
+								INNER JOIN users u
+								ON c.userId = u.id
+								WHERE c.chapterId = ?
+								ORDER BY commentId DESC');
+		$req->execute(array($chapterId));
+		return $req;
+	}
 	public function addComment($postData)
 	{
 		$db = $this->dbConnect();

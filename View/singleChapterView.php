@@ -4,6 +4,7 @@ if($chapter->rowCount())
 {
 	$db_data = $chapter->fetch();
 	$title = 'Chapitre ' . $chapterNumber . ' - ' . $db_data['title'];
+	$id = $db_data['id'];
 
 	ob_start();
 
@@ -20,11 +21,10 @@ if($chapter->rowCount())
 		if($whoIsConnected)
 		{
 			?>
-			<form action="index.php?action=postComment&chapterId=<?= $db_data['id'] ?>" method="post">
+			<form action="index.php?action=postComment&chapterId=<?= $id ?>&from=chapterView" method="post">
 				<fieldset>
 					<legend>Ajouter un commentaire</legend>
-					<textarea name="content">
-					</textarea>
+					<textarea rows="5" cols="30" name="content" placeholder="Saisissez votre commentaire"></textarea>
 					<input type="submit" value="Envoyer">
 				</fieldset>
 			</form>
@@ -46,7 +46,7 @@ if($chapter->rowCount())
 							<p><a>Signaler</a></p>
 						</fieldset>
 					</div>
-					<p><a>Voir tous les commentaires</a></p>
+					
 
 					<?php
 				}
@@ -54,6 +54,7 @@ if($chapter->rowCount())
 				?>
 
 			</div>
+			<p><a href="index.php?action=listComments&chapterId=<?= $id ?>">Voir tous les commentaires</a></p>
 			<?php
 
 		}

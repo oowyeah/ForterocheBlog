@@ -333,17 +333,21 @@ function singleChapter($chapterId, $messageCode)
 
 	require('View/singleChapterView.php');
 }
-function postComment($postData)
+function postComment($postData, $from)
 {
 
 	$whoIsConnected = whoIsConnected();
 	$usersManager = new UsersManager();
 	$commentsManager = new CommentsManager();
-	$user = $usersManager->getLogin(array('username' => $_SESSION['username']));
-	$data = $user->fetch();
-	$userId = $data['id'];
 
-	$postData['userId'] = $userId;
+	if($whoIsConnected != false)
+	{
+		$user = $usersManager->getLogin(array('username' => $_SESSION['username']));
+		$data = $user->fetch();
+		$userId = $data['id'];
+		$postData['userId'] = $userId;
+	}
+
 	$postData['content'] = strip_tags($postData['content']);
 
 	if($whoIsConnected == "admin" || $whoIsConnected == "user")
@@ -351,7 +355,14 @@ function postComment($postData)
 		$addedLines = $commentsManager->addComment($postData);
 		if($addedLines->rowCount())
 		{
-			header("Location: index.php?action=singleChapter&chapterId=" .$postData['chapterId'] . "&message=8");
+			if($from == "chapterView")
+			{
+				header("Location: index.php?action=singleChapter&chapterId=" .$postData['chapterId'] . "&message=8");
+			}
+			elseif($from == "commentsView")
+			{
+				header("Location: index.php?action=listComments&chapterId=" .$postData['chapterId'] . "&message=8");
+			}
 		}
 		else
 		{
@@ -362,6 +373,34 @@ function postComment($postData)
 	{
 		throw new Exception("Vous n'avez pas l'autorisation d'effectuer cette opération !");
 	}
+}
+function listComments($chapterId, $messageCode)
+{
+	if(isset($messageCode))
+	{
+		$message = getMessage($messageCode);
+	}
+
+	$whoIsConnected = whoIsConnected();
+	$commentsManager = new CommentsManager();
+	$comments = $commentsManager->getComments($chapterId);
+	$chaptersManager = new ChaptersManager();
+	$chapter = $chaptersManager->getChapter($chapterId);
+	$chapters = $chaptersManager->getChaptersList();
+	$chapterNumber = 1;
+	while($data = $chapters->fetch())
+	{
+		if($data['id'] == $chapterId)
+		{
+			break;
+		}
+		else
+		{
+			$chapterNumber++;
+		}
+	}
+
+	require('View/commentsView.php');
 }
 function showError($error)
 {

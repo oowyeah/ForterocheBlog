@@ -187,7 +187,7 @@ try {
 		elseif($_GET['action'] == "postComment")
 		{
 
-			if(isset($_POST['content']) && isset($_GET['chapterId']))
+			if(isset($_POST['content']) && isset($_GET['chapterId']) && isset($_GET['from']))
 			{
 				if(!empty($_POST['content']) && !empty($_GET['chapterId']))
 				{
@@ -197,7 +197,7 @@ try {
 						'userId' => null
 					);
 
-					postComment($postData);
+					postComment($postData, $_GET['from']);
 				}
 				else
 				{
@@ -207,6 +207,18 @@ try {
 			else
 			{
 				throw new Exception("Veuillez saisir un commentaire !");
+			}
+		}
+		elseif($_GET['action'] == "listComments" && isset($_GET['chapterId']))
+		{
+			if(isset($_GET['message']))
+			{
+				$messageCode = $_GET['message'];
+				listComments($_GET['chapterId'], $messageCode);
+			}
+			else
+			{
+				listComments($_GET['chapterId'], null);
 			}
 		}
 	}
