@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8" />
         <title><?= $title ?></title>
+        <link href="https://fonts.googleapis.com/css?family=Karla:700|Martel&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="public/css/style.css" />
         <?php
         if(isset($headContent)) {
@@ -13,18 +15,18 @@
         
     <body>
         <header>
-            <h1>Blog de Jean Forteroche - Ecrivain</h1>
+            <h1>FORTEROCHE BLOG</h1>
             <nav>
                 <ul>
-                    <li><a href="index.php">Acceuil</a></li>
-                    <li><a href="index.php?action=chaptersList">Chapitres</a></li>
-                    <li>Contact</li>
+                    <li><a href="index.php">ACCEUIL</a></li>
+                    <li><a href="index.php?action=chaptersList">CHAPITRES</a></li>
+                    <li>CONTACT</li>
                     <?php
                     if(isset($whoIsConnected))
                     {
                         if($whoIsConnected == 'admin') {
                             ?>
-                            <li><a href="index.php?action=dashBoard">Tableau de bord</a></li>
+                            <li><a href="index.php?action=dashBoard">TABLEAU DE BORD</a></li>
                             <?php
                         } 
                     }
@@ -32,13 +34,13 @@
                     {
                         if(!$whoIsConnected) {
                             ?>
-                            <li><a href="index.php?action=signInPage">Connexion</a></li>
+                            <li><a href="index.php?action=signInPage">CONNEXION</a></li>
                             <?php
                         }
                         else
                         {
                             ?>
-                            <li><a href="index.php?action=signOut">Déconnexion</a></li>
+                            <li><a href="index.php?action=signOut">DECONNEXION</a></li>
                             <?php                        
                         }  
                     }
@@ -47,7 +49,11 @@
                     ?>
                 </ul>
             </nav>
+        
+        </header>
+
         <?php
+
         if(isset($message))
         {
             ?>
@@ -55,7 +61,6 @@
             <?php    
         } 
         ?>
-        </header>
 
         <?= $content ?>
     </body>
