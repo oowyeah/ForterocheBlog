@@ -8,7 +8,7 @@ ob_start();
 
 <main>
 
-	<h2>Les chapitres</h2>
+	<h2>LES CHAPITRES</h2>
 
 	<?php
 
@@ -48,7 +48,7 @@ ob_start();
 					?>
 
 				</div>
-				<div class="ReadButton">
+				<div class="readButton">
 					<a href="index.php?action=singleChapter&chapterId=<?= $db_data['id'] ?>">Lire la suite</a>
 				</div>
 			</div>

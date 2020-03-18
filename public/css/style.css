@@ -50,6 +50,59 @@ header nav ul li a:hover
 	color: #1b98e0;
 	text-decoration: none;
 }
+main h2
+{
+	font-size: 25px;
+	text-align: center;
+	color: #1b98e0;
+	font-family: 'Karla', sans-serif;
+}
+#chaptersList
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.chapter
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 40%;
+	height: 200px;
+	padding: 20px;
+	padding-bottom: 30px;
+	border-radius: 10px;
+	background-color: #1b98e0;
+	margin-bottom: 20px;
+	color: #e8f1f2;
+}
+.chapter h3
+{
+	margin-top: 0;
+	font-family: 'Karla', sans-serif;
+	color: #13293d;
+}
+.readButton
+{
+	text-align: right
+}
+
+.readButton a
+{
+	color: #006494;
+	text-decoration: none;
+	font-family: 'Karla', sans-serif;
+	background-color: #e8f1f2;
+	padding: 10px;
+	border-radius: 10px;	
+}
+.readButton a:hover
+{
+	color: #1b98e0;
+	text-decoration: none;
+}
+
 
 @media all and (max-width: 900px)
 {
@@ -64,5 +117,15 @@ header nav ul li a:hover
 	{
 		height: auto;
 		flex-direction: column;
+	}
+	#chaptersList
+	{
+		flex-direction: column;
+		flex-wrap: nowrap;
+		align-items: center;
+	}
+	.chapter
+	{
+		width: auto;
 	}
 }
