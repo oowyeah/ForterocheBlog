@@ -8,7 +8,8 @@ ob_start();
 <script>
 	tinymce.init({
     	selector: '#mytextarea',
-    	language: 'fr_FR'
+    	language: 'fr_FR',
+    	content_style: 'body { font-family: Martel, sans-serif; }'
     });
 </script>
 

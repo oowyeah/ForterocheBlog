@@ -76,6 +76,7 @@ main h2
 	background-color: #1b98e0;
 	margin-bottom: 20px;
 	color: #e8f1f2;
+	font-family: 'Martel', sans-serif;
 }
 .chapter h3
 {
@@ -96,11 +97,27 @@ main h2
 	background-color: #e8f1f2;
 	padding: 10px;
 	border-radius: 10px;	
-}
+}font-family: 'Karla', sans-serif;
 .readButton a:hover
 {
 	color: #1b98e0;
 	text-decoration: none;
+}
+main .chapterContent
+{
+	width: 80%;
+	color: #13293d;
+	margin: auto;
+	line-height: 1.5;
+	font-family: 'Martel', sans-serif;
+}
+main .chapterEnd
+{
+	width: 80%;
+	margin: auto;
+	text-align: right;
+	font-family: 'Martel', sans-serif;
+	color: #13293d;
 }
 
 
@@ -128,4 +145,13 @@ main h2
 	{
 		width: auto;
 	}
+	main .chapterContent
+	{
+		width: 100%;
+	}
+	main .chapterEnd
+	{
+		width: 100%;
+	}
+
 }
