@@ -4,7 +4,7 @@ $title = "Ajouter un chapitre";
 
 ob_start();
 ?>
-<script src="../tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="tinymce/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
 	tinymce.init({
     	selector: '#mytextarea',

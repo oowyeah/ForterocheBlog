@@ -21,32 +21,41 @@
                     <li><a href="index.php">ACCEUIL</a></li>
                     <li><a href="index.php?action=chaptersList">CHAPITRES</a></li>
                     <li>CONTACT</li>
+
                     <?php
+
                     if(isset($whoIsConnected))
                     {
-                        if($whoIsConnected == 'admin') {
+                        if($whoIsConnected)
+                        {
+                            if($whoIsConnected == 'admin')
+                            {
+                                ?>
+
+                                <li><a href="index.php?action=dashBoard">TABLEAU DE BORD</a></li>
+
+                                <?php
+                            }
+
                             ?>
-                            <li><a href="index.php?action=dashBoard">TABLEAU DE BORD</a></li>
-                            <?php
+
+                            <li><a href="index.php?action=signOut">DECONNEXION</a></li>
+
+                            <?php  
+
                         } 
-                    }
-                    if(isset($whoIsConnected))
-                    {
-                        if(!$whoIsConnected) {
-                            ?>
-                            <li><a href="index.php?action=signInPage">CONNEXION</a></li>
-                            <?php
-                        }
                         else
                         {
                             ?>
-                            <li><a href="index.php?action=signOut">DECONNEXION</a></li>
-                            <?php                        
-                        }  
+
+                            <li><a href="index.php?action=signInPage">CONNEXION</a></li>
+
+                            <?php
+                        }
                     }
              
-
                     ?>
+
                 </ul>
             </nav>
         
@@ -57,9 +66,12 @@
         if(isset($message))
         {
             ?>
+
             <div id="message"><p><?= $message ?></p></div>
+            
             <?php    
-        } 
+        }
+
         ?>
 
         <?= $content ?>

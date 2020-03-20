@@ -131,7 +131,7 @@ function signUp($postData)
 	}
 	else
 	{
-		$postData['username'] = strip_tags($postData['username']);
+		$postData['username'] = $postData['username'];
 		$postData['password'] = password_hash($postData['password'], PASSWORD_DEFAULT);
 		$signUp = $usersManager->addUser($postData);
 
@@ -164,7 +164,7 @@ function addChapter($postData)
 {
 	$whoIsConnected = whoIsConnected();
 	$chaptersManager = new ChaptersManager();
-	$postData['title'] = strip_tags($postData['title']);
+	$postData['title'] = $postData['title'];
 	if($whoIsConnected == "admin")
 	{
 		$addedLines = $chaptersManager->addChapter($postData);
@@ -205,7 +205,7 @@ function updateChapter($postData)
 {
 	$whoIsConnected = whoIsConnected();
 	$chaptersManager = new ChaptersManager();
-	$postData['title'] = strip_tags($postData['title']);
+	$postData['title'] = $postData['title'];
 	if($whoIsConnected == "admin")
 	{
 		$addedLines = $chaptersManager->UpdateChapter($postData);
@@ -305,7 +305,7 @@ function chaptersList()
 	$whoIsConnected = whoIsConnected();
 	$chaptersManager = new ChaptersManager();
 	$chapters = $chaptersManager->getChaptersList();
-	require('View/ChaptersView.php');
+	require('View/chaptersView.php');
 }
 function singleChapter($chapterId, $messageCode)
 {
@@ -350,7 +350,7 @@ function postComment($postData, $from)
 		$postData['userId'] = $userId;
 	}
 
-	$postData['content'] = strip_tags($postData['content']);
+	$postData['content'] = $postData['content'];
 
 	if($whoIsConnected == "admin" || $whoIsConnected == "user")
 	{

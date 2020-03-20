@@ -4,7 +4,7 @@ $title = "Modifier un chapitre";
 
 ob_start();
 ?>
-<script src="../tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="tinymce/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
 	tinymce.init({
     	selector: '#mytextarea',
@@ -36,7 +36,7 @@ ob_start();
 			<form method="post" action="index.php?action=updateChapter&chapterId=<?= $db_data['id'] ?>">
 				<p>
 					<label for="title">Titre de l'épisode : </label>
-					<input required type="text" name="title" id="title" value="<?= $db_data['title'] ?>" />
+					<input required type="text" name="title" id="title" value="<?= htmlspecialchars($db_data['title']) ?>" />
 				</p>
 				<textarea id="mytextarea" name="content"><?= $db_data['content'] ?></textarea>
 

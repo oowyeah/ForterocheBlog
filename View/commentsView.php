@@ -3,7 +3,7 @@
 if($chapter->rowCount())
 {
 	$db_data = $chapter->fetch();
-	$title = 'Chapitre ' . $chapterNumber . ' - ' . $db_data['title'];
+	$title = 'Chapitre ' . $chapterNumber . ' - ' . htmlspecialchars($db_data['title']);
 	$id = $db_data['id'];
 
 	ob_start();
@@ -11,7 +11,7 @@ if($chapter->rowCount())
 	?>
 
 	<main>
-		<h2>Chapitre <?= $chapterNumber ?> - <?= $db_data['title'] ?></h2>
+		<h2>Chapitre <?= $chapterNumber ?> - <?= htmlspecialchars($db_data['title']) ?></h2>
 
 		<h3>Commentaires</h3>
 
@@ -39,8 +39,8 @@ if($chapter->rowCount())
 
 					<div class="comment">
 						<fieldset>
-							<legend><h4><?= $db_data['userName'] ?> le <?= $db_data['date'] ?></h4></legend>
-							<p><?= $db_data['content'] ?></p>
+							<legend><h4><?= htmlspecialchars($db_data['userName']) ?> le <?= $db_data['date'] ?></h4></legend>
+							<p><?= htmlspecialchars($db_data['content']) ?></p>
 							<?php
 							if($whoIsConnected)
 							{

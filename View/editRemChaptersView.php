@@ -32,7 +32,7 @@ ob_start();
 				?>
 
 				<div class="chapter">
-					<h3>Chapitre <?= $chapterNumber ?> - <?= $db_data['title'] ?></h3>
+					<h3>Chapitre <?= $chapterNumber ?> - <?= htmlspecialchars($db_data['title']) ?></h3>
 					<div class="buttons">
 						<div class="editButton">
 							<a href="index.php?action=editChapter&chapterId=<?= $db_data['id'] ?>">Editer</a>

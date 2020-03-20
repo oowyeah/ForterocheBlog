@@ -31,8 +31,8 @@ ob_start();
 				?>
 
 				<div class="reportedComment">
-					<p>Le : <?= $db_data['date'] ?> - De : <?= $db_data['userName'] ?></p>
-					<p>"<?= $db_data['content'] ?>"</p>
+					<p>Le : <?= $db_data['date'] ?> - De : <?= htmlspecialchars($db_data['userName']) ?></p>
+					<p>"<?= htmlspecialchars($db_data['content']) ?>"</p>
 					<div class="buttons">
 						<div class="allowButton">
 							<a href="index.php?action=allowComment&commentId=<?= $db_data['comment_Id'] ?>">Autoriser</a>
