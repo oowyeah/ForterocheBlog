@@ -21,7 +21,6 @@
                 <ul>
                     <li><a href="index.php">ACCEUIL</a></li>
                     <li><a href="index.php?action=chaptersList">CHAPITRES</a></li>
-                    <li>CONTACT</li>
 
                     <?php
 

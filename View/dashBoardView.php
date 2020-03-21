@@ -9,14 +9,12 @@ ob_start();
 	if($whoIsConnected == 'admin')
 	{
 		?>
-
+		<h2>TABLEAU DE BORD</h2>
         <nav id="dashBoard">
             <ul>
                 <a href="index.php?action=newChapter"><li>Ajouter un chapitre</li></a>
                 <a href="index.php?action=editRemChapters"><li>Modifier ou Supprimer un chapitre</li></a>
                 <a href="index.php?action=reportedComments"><li>Modérer les commentaires</li></a>
-                <li>Ajouter un compte administrateur</li>
-                <li>Modifier mes informations de contact</li>
             </ul>
         </nav>
 

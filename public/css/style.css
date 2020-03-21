@@ -240,6 +240,23 @@ main a
 	line-height: 1.5;
 	font-family: 'Martel', sans-serif;
 }
+#dashBoard ul
+{
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	align-items: center;
+	padding: 0;
+}
+#dashBoard li
+{
+	display: inline-block;
+	list-style-type: none;
+}
+#dashBoard ul a
+{
+	margin-bottom: 10px;
+}
 
 @media all and (max-width: 900px)
 {
