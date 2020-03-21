@@ -69,7 +69,7 @@ if($chapter->rowCount())
 		{
 			?>
 
-			<p>Il n'y a pas encore de commentaires.</p>
+			<p class="noComments">Il n'y a pas encore de commentaires.</p>
 
 			<?php
 		}
@@ -77,7 +77,7 @@ if($chapter->rowCount())
 
 else
 {
-	$title = "Episode Introuvable"
+	$title = "Episode Introuvable";
 	?>
 
 	<p>L'épisode est introuvable</p>

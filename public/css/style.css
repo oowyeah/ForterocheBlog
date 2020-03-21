@@ -257,6 +257,19 @@ main a
 {
 	margin-bottom: 10px;
 }
+.buttons
+{
+	display: flex;
+}
+.buttons .button:last-child
+{
+	margin-left: 20px;
+}
+#reportedComments
+{
+	width: 80%;
+	margin: auto;
+}
 
 @media all and (max-width: 900px)
 {
@@ -299,6 +312,10 @@ main a
 		width: 100%;
 	}
 	#commentForm
+	{
+		width: 100%;
+	}
+	#reportedComments
 	{
 		width: 100%;
 	}

@@ -30,17 +30,20 @@ ob_start();
 			{
 				?>
 
-				<div class="reportedComment">
-					<p>Le : <?= $db_data['date'] ?> - De : <?= htmlspecialchars($db_data['userName']) ?></p>
-					<p>"<?= htmlspecialchars($db_data['content']) ?>"</p>
-					<div class="buttons">
-						<div class="allowButton">
-							<a href="index.php?action=allowComment&commentId=<?= $db_data['comment_Id'] ?>">Autoriser</a>
+				<div class="comment">
+					<fieldset>
+						<legend>Le : <?= $db_data['date'] ?> - De : <?= htmlspecialchars($db_data['userName']) ?></legend>
+
+						<p>"<?= htmlspecialchars($db_data['content']) ?>"</p>
+						<div class="buttons">
+							<div class="button">
+								<a href="index.php?action=allowComment&commentId=<?= $db_data['comment_Id'] ?>">Autoriser</a>
+							</div>
+							<div class="button">
+								<a href="index.php?action=removeComment&commentId=<?= $db_data['comment_Id'] ?>">Supprimer</a>
+							</div>
 						</div>
-						<div class="removeButton">
-							<a href="index.php?action=removeComment&commentId=<?= $db_data['comment_Id'] ?>">Supprimer</a>
-						</div>
-					</div>
+					</fieldset>
 				</div>
 
 				<?php
@@ -58,7 +61,7 @@ ob_start();
 
 			?>
 
-			<p>Il n'y pas de commentaires signalés !</p>
+			<p class="noComments">Il n'y pas de commentaires signalés !</p>
 
 			<?php
 
