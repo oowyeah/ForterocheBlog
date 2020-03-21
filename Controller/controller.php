@@ -424,7 +424,7 @@ function reportComment($commentId, $from)
 		}
 		else
 		{
-			throw new Exception("Il y a eu un problème lors de l'autorisation du commentaire !");
+			throw new Exception("Il y a eu un problème lors du signalement, il a peut être déjà été signalé !");
 		}
 	}
 	else
