@@ -15,17 +15,20 @@ if($chapter->rowCount())
 		<div class="chapterContent"><?= $db_data['content'] ?></div>
 		<p class="chapterEnd">Jean Forteroche - Publié le <?= $db_data['date'] ?></p>
 
-		<h3>Commentaires</h3>
-
+		<fieldset class="divider">
+			<legend><h3>Commentaires</h3></legend>
+		</fieldset>
 		<?php
 		if($whoIsConnected)
 		{
 			?>
-			<form action="index.php?action=postComment&chapterId=<?= $id ?>&from=chapterView" method="post">
+			<form id="commentForm" action="index.php?action=postComment&chapterId=<?= $id ?>&from=chapterView" method="post">
 				<fieldset>
 					<legend>Ajouter un commentaire</legend>
-					<textarea rows="5" cols="30" name="content" placeholder="Saisissez votre commentaire"></textarea>
-					<input type="submit" value="Envoyer">
+					<div id=fieldsetDiv>
+						<textarea rows="5" cols="30" name="content" placeholder="Saisissez votre commentaire"></textarea>
+						<input type="submit" value="ENVOYER">
+					</div>
 				</fieldset>
 			</form>
 			<?php
@@ -46,7 +49,7 @@ if($chapter->rowCount())
 							<?php
 							if($whoIsConnected) {
 								?>
-								<p><a href="index.php?action=reportComment&commentId=<?= $db_data['commentId'] ?>&from=chapterView&chapterId=<?= $id ?>">Signaler</a></p>
+								<div class="button"><a href="index.php?action=reportComment&commentId=<?= $db_data['commentId'] ?>&from=chapterView&chapterId=<?= $id ?>">Signaler <i class="fas fa-exclamation-circle"></i></a></div>
 								<?php
 							}
 							?>
@@ -60,7 +63,7 @@ if($chapter->rowCount())
 				?>
 
 			</div>
-			<p><a href="index.php?action=listComments&chapterId=<?= $id ?>">Voir tous les commentaires</a></p>
+			<div class="button"><a href="index.php?action=listComments&chapterId=<?= $id ?>">Voir tous les commentaires</a></div>
 			<?php
 
 		}
@@ -68,7 +71,7 @@ if($chapter->rowCount())
 		{
 			?>
 
-			<p>Il n'y a pas encore de commentaires.</p>
+			<p class="noComments">Il n'y a pas encore de commentaires.</p>
 
 			<?php
 		}

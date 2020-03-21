@@ -5,7 +5,8 @@
         <title><?= $title ?></title>
         <link href="https://fonts.googleapis.com/css?family=Karla:700|Martel&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="public/css/style.css" />
+        <link rel="stylesheet" href="public/css/style.css">
+        <script src="https://kit.fontawesome.com/da9bf5bde4.js" crossorigin="anonymous"></script>
         <?php
         if(isset($headContent)) {
         	echo $headContent;
