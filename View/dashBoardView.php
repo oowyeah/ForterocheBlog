@@ -24,7 +24,7 @@ ob_start();
 	{
 		?>
 
-		<p>Vous n'avez pas les droits nécessaires pour accéder à cette page !</p>
+		<p class="noComments">Vous n'avez pas les droits nécessaires pour accéder à cette page !</p>
 
 		<?php
 	}

@@ -270,7 +270,78 @@ main a
 	width: 80%;
 	margin: auto;
 }
+#chapterForm label
+{
+	color: #13293d;
+	line-height: 1.5;
+	font-family: 'Martel', sans-serif;
+}
+#chapterForm input[type="submit"]
+{
+	display: block;
+	border-radius: 10px;
+	font-family: 'Karla', sans-serif;
+	font-size: 18px;
+	color: #e8f1f2;
+	background-color: #1b98e0;
+	height: 50px;
+	border: none;
+	margin-top: 10px;
+	cursor: pointer;
+}
+#chapterForm input[type="text"]
+{
+	flex: 1;
+	border-radius: 10px;
+	font-family: 'Karla', sans-serif;
+	font-size: 18px;
+	color: #13293d;
+	height: 30px;
+	border: none;
+	margin-left: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+#chapterForm p
+{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+#chapterForm textarea
+{
+	height: 50vh;
+	color: #13293d;
+	line-height: 1.5;
+	font-family: 'Martel', sans-serif;
+}
+#editRemChapters
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 
+}
+#editRemChapters .chapter
+{
+	background-color: transparent;
+	border: solid #1b98e0 1px;
+	height: 100px;
+
+}
+.chapter h3
+{
+	text-align: center;
+}
+.buttons
+{
+	display: flex;
+	justify-content: center;
+}
+.buttons .editButton
+{
+	margin-right: 10px;
+}
 @media all and (max-width: 900px)
 {
 	header
@@ -318,5 +389,19 @@ main a
 	#reportedComments
 	{
 		width: 100%;
+	}
+	#chapterForm p
+	{
+		flex-direction: column;
+	}
+	#chapterForm input[type="text"]
+	{
+		flex: none;
+		width: 90%;
+	}
+	#chapterForm input[type="submit"]
+	{
+		margin-left: auto;
+		margin-right: auto;
 	}
 }

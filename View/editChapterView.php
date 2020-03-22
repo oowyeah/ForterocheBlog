@@ -33,7 +33,7 @@ ob_start();
 
 			<h2>Modifier le chapitre</h2>
 
-			<form method="post" action="index.php?action=updateChapter&chapterId=<?= $db_data['id'] ?>">
+			<form id="chapterForm" method="post" action="index.php?action=updateChapter&chapterId=<?= $db_data['id'] ?>">
 				<p>
 					<label for="title">Titre de l'épisode : </label>
 					<input required type="text" name="title" id="title" value="<?= htmlspecialchars($db_data['title']) ?>" />

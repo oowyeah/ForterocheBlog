@@ -22,7 +22,7 @@ ob_start();
 	{
 		?>
 
-		<p>Veuillez d'abord vous <a href="index.php?action=signOut">déconnecter</a> avant d'éffectuer une inscription !</p>
+		<p class="noComments">Veuillez d'abord vous <a href="index.php?action=signOut">déconnecter</a> avant d'éffectuer une inscription !</p>
 
 		<?php
 	}

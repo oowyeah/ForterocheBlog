@@ -12,7 +12,7 @@ ob_start();
 		{
 			?>
 
-			<form method="post" action="index.php?action=signIn">
+			<form id="singInForm" method="post" action="index.php?action=signIn">
 				<p><label for="username">Utilisateur : </label><input type="text" id="username" name="username"></p>
 				<p><label for="password">Mot de passe : </label><input type="password" id="password" name="password"></p>
 				<p><input type="submit" value="Connexion"></p>
@@ -25,7 +25,7 @@ ob_start();
 		{
 			?>
 
-			<p>Vous êtes déja connecté(e) !</p>
+			<p class="noComments">Vous êtes déja connecté(e) !</p>
 			
 			<?php
 		}

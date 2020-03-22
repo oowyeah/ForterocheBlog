@@ -28,7 +28,7 @@ ob_start();
 		?>
 		<h2>Rédigez votre histoire</h2>
 
-		<form method="post" action="index.php?action=addChapter">
+		<form id="chapterForm" method="post" action="index.php?action=addChapter">
 			<p>
 				<label for="title">Titre de l'épisode : </label>
 				<input required type="text" name="title" id="title" />
@@ -44,7 +44,7 @@ ob_start();
 	{
 		?>
 
-		<p>Vous n'avez pas les droits nécessaires pour accéder à cette page !</p>
+		<p class="noComments">Vous n'avez pas les droits nécessaires pour accéder à cette page !</p>
 
 		<?php
 	}

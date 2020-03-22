@@ -68,7 +68,7 @@ ob_start();
 
 		?>
 
-		<p>Il n'y pas de chapitres pour le moment</p>
+		<p class="noComments">Il n'y pas de chapitres pour le moment</p>
 
 		<?php
 

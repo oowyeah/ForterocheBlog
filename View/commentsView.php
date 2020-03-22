@@ -80,7 +80,7 @@ else
 	$title = "Episode Introuvable";
 	?>
 
-	<p>L'épisode est introuvable</p>
+	<p class="noComments">L'épisode est introuvable</p>
 	</main>
 
 	<?php

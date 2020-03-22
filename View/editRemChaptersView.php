@@ -58,7 +58,7 @@ ob_start();
 
 			?>
 
-			<p>Il n'y pas de chapitres pour le moment</p>
+			<p class="noComments">Il n'y pas de chapitres pour le moment</p>
 
 			<?php
 
@@ -68,7 +68,7 @@ ob_start();
 	{
 		?>
 
-		<p>Vous n'avez pas les droits nécessaires pour accéder à cette page !</p>
+		<p class="noComments">Vous n'avez pas les droits nécessaires pour accéder à cette page !</p>
 
 		<?php
 	}
