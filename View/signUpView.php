@@ -10,7 +10,7 @@ ob_start();
 	{
 		?>
 
-		<form method="post" action="index.php?action=signUp">
+		<form id="signUpForm" method="post" action="index.php?action=signUp">
 			<p><label for="username">Utilisateur : </label><input type="text" id="username" name="username"></p>
 			<p><label for="password">Mot de passe : </label><input type="password" id="password" name="password"></p>
 			<p><input type="submit" value="Inscription"></p>

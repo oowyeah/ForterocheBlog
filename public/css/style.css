@@ -342,6 +342,72 @@ main a
 {
 	margin-right: 10px;
 }
+#signInForm
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Martel', sans-serif;
+}
+#signInForm input[type="submit"]
+{
+	display: block;
+	border-radius: 10px;
+	font-family: 'Karla', sans-serif;
+	font-size: 18px;
+	color: #e8f1f2;
+	background-color: #1b98e0;
+	height: 50px;
+	border: none;
+	margin-top: 10px;
+	cursor: pointer;
+}
+#signInForm input[type="text"], input[type="password"]
+{
+	border-radius: 10px;
+	font-family: 'Karla', sans-serif;
+	font-size: 18px;
+	color: #13293d;
+	height: 30px;
+	border: none;
+	margin-left: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+#signUpForm
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Martel', sans-serif;
+}
+#signUpForm input[type="submit"]
+{
+	display: block;
+	border-radius: 10px;
+	font-family: 'Karla', sans-serif;
+	font-size: 18px;
+	color: #e8f1f2;
+	background-color: #1b98e0;
+	height: 50px;
+	border: none;
+	margin-top: 10px;
+	cursor: pointer;
+}
+#signUpForm input[type="text"], input[type="password"]
+{
+	border-radius: 10px;
+	font-family: 'Karla', sans-serif;
+	font-size: 18px;
+	color: #13293d;
+	height: 30px;
+	border: none;
+	margin-left: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
 @media all and (max-width: 900px)
 {
 	header
@@ -403,5 +469,19 @@ main a
 	{
 		margin-left: auto;
 		margin-right: auto;
+	}
+	#signInForm p
+	{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	#signUpForm p
+	{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
 	}
 }
