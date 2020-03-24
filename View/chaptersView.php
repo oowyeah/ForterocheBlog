@@ -26,7 +26,7 @@ ob_start();
 			?>
 
 			<div class="chapter">
-				<h3>Chapitre <?= $chapterNumber ?> - <?= htmlspecialchars($db_data['title']) ?></h3>
+				<h3>Chapitre <?= $chapterNumber ?> <?= htmlspecialchars($db_data['title']) ?></h3>
 				<div class="content">
 					<?php
 					if(str_word_count($db_data['content']) >= 30)

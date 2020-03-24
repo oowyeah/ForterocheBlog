@@ -30,8 +30,8 @@ ob_start();
 
 		<form id="chapterForm" method="post" action="index.php?action=addChapter">
 			<p>
-				<label for="title">Titre de l'épisode : </label>
-				<input required type="text" name="title" id="title" />
+				<label for="title">Titre du chapitre : </label>
+				<input placeholder="facultatif" type="text" name="title" id="title" />
 			</p>
 			<textarea id="mytextarea" name="content"></textarea>
 

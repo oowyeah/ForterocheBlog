@@ -35,8 +35,8 @@ ob_start();
 
 			<form id="chapterForm" method="post" action="index.php?action=updateChapter&chapterId=<?= $db_data['id'] ?>">
 				<p>
-					<label for="title">Titre de l'épisode : </label>
-					<input required type="text" name="title" id="title" value="<?= htmlspecialchars($db_data['title']) ?>" />
+					<label for="title">Titre du chapitre : </label>
+					<input placeholder="facultatif" type="text" name="title" id="title" value="<?= htmlspecialchars($db_data['title']) ?>" />
 				</p>
 				<textarea id="mytextarea" name="content"><?= $db_data['content'] ?></textarea>
 

@@ -83,7 +83,7 @@ try {
 		{
 			if(isset($_POST['title']) && isset($_POST['content']))
 			{
-				if(!empty($_POST['title']) && !empty($_POST['content']))
+				if(!empty($_POST['content']))
 				{
 					$postData = array(
 						'title' => $_POST['title'],
@@ -123,7 +123,7 @@ try {
 		{
 			if(isset($_POST['title']) && isset($_POST['content']))
 			{
-				if(!empty($_POST['title']) && !empty($_POST['content']))
+				if(!empty($_POST['content']))
 				{
 					$postData = array(
 						'title' => $_POST['title'],

@@ -11,7 +11,7 @@ if($chapter->rowCount())
 	?>
 
 	<main>
-		<h2>Chapitre <?= $chapterNumber ?> - <?= htmlspecialchars($db_data['title']) ?></h2>
+		<h2>Chapitre <?= $chapterNumber ?> <?= htmlspecialchars($db_data['title']) ?></h2>
 		<div class="chapterContent"><?= $db_data['content'] ?></div>
 		<p class="chapterEnd">Jean Forteroche - Publié le <?= $db_data['date'] ?></p>
 
