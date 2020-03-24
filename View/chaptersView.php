@@ -32,13 +32,11 @@ ob_start();
 					if(str_word_count($db_data['content']) >= 30)
 					{
 
-						while(str_word_count($db_data['content']) >= 30)
-						{
-							$db_data['content'] = substr($db_data['content'], 0, -1);
-						}
-
-						echo $db_data['content'] . "(...)</p>";
+						$str = explode(" ", strip_tags($db_data['content']), 30);
+						$str = array_slice($str, 0, 29);
+						echo implode(" ", $str) . " (...)";
 					}
+
 					else
 					{
 						?>
