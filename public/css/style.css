@@ -419,6 +419,53 @@ main a
 	background-color: rgba(36, 123, 160, 0.2);
 
 }
+#hero
+{
+	position: relative;
+	background-image: url('../img/book.jpg');
+	background-position: center center;
+	background-size: cover;
+	width: 100%;
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+#hero:after {
+  position: absolute;
+  content: " ";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: rgba(232, 241, 242, 0.3);
+}
+#hero h2
+{
+	z-index: 1;
+	font-size: 40px;
+	color: #13293d;
+}
+#hero .button
+{
+	z-index: 1;
+}
+#welcome
+{
+	color: #13293d;
+	line-height: 1.5;
+	font-family: 'Martel', sans-serif;
+	text-align: center;
+	border-top: solid #1b98e0 1px;
+}
+#welcome span
+{
+	font-style: italic;
+	font-weight: 800;
+}
 @media all and (max-width: 900px)
 {
 	header
