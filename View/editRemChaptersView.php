@@ -3,6 +3,15 @@
 $title = "Supprimer un chapitre";
 
 ob_start();
+?>
+
+
+
+<?php
+
+$headContent = ob_get_clean();
+
+ob_start();
 
 ?>
 
@@ -63,6 +72,27 @@ ob_start();
 			<?php
 
 		}
+		?>
+		<script>
+			let classes = document.getElementsByClassName('removeButton');
+
+			for(let i=0; i < classes.length; i++)
+			{
+				console.log(classes[i]);
+				classes[i].addEventListener("click", function(e) {
+
+					e.preventDefault();
+
+					let yes = confirm('Etes-vous sûr de vouloir supprimer ce chapitre ?');
+					
+					if(yes)
+					{
+						location.href = e.target.href;
+					}
+				});
+			}
+		</script>
+		<?php
 	}
 	else
 	{

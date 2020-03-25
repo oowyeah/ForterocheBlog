@@ -39,7 +39,7 @@ ob_start();
 							<div class="button">
 								<a href="index.php?action=allowComment&commentId=<?= $db_data['comment_Id'] ?>">Autoriser</a>
 							</div>
-							<div class="button">
+							<div class="button removeButton">
 								<a href="index.php?action=removeComment&commentId=<?= $db_data['comment_Id'] ?>">Supprimer</a>
 							</div>
 						</div>
@@ -54,7 +54,28 @@ ob_start();
 
 			</div>
 
+			<script>
+				let classes = document.getElementsByClassName('removeButton');
+
+				for(let i=0; i < classes.length; i++)
+				{
+					console.log(classes[i]);
+					classes[i].addEventListener("click", function(e) {
+
+						e.preventDefault();
+
+						let yes = confirm('Etes-vous sûr de vouloir supprimer ce commentaire ?');
+						
+						if(yes)
+						{
+							location.href = e.target.href;
+						}
+					});
+				}
+			</script>
+			
 			<?php
+
 		}
 		else
 		{
