@@ -3,7 +3,7 @@
 if($chapter->rowCount())
 {
 	$db_data = $chapter->fetch();
-	$title = 'Chapitre ' . $chapterNumber . ' - ' . htmlspecialchars($db_data['title']);
+	$title = 'Commentaires Chapitre ' . $chapterNumber . ' ' . htmlspecialchars($db_data['title']);
 	$id = $db_data['id'];
 
 	ob_start();
@@ -11,7 +11,7 @@ if($chapter->rowCount())
 	?>
 
 	<main>
-		<h2>Chapitre <?= $chapterNumber ?> - <?= htmlspecialchars($db_data['title']) ?></h2>
+		<h2>Chapitre <?= $chapterNumber ?> <?= htmlspecialchars($db_data['title']) ?></h2>
 
 		<fieldset class="divider">
 			<legend><h3>Commentaires</h3></legend>
@@ -81,13 +81,14 @@ else
 	?>
 
 	<p class="noComments">L'épisode est introuvable</p>
-	</main>
+
 
 	<?php
 }
 
 ?>
-
+	
+	</main>
 
 <footer>
 </footer>

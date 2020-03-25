@@ -3,7 +3,7 @@
 if($chapter->rowCount())
 {
 	$db_data = $chapter->fetch();
-	$title = 'Chapitre ' . $chapterNumber . ' - ' . htmlspecialchars($db_data['title']);
+	$title = 'Chapitre ' . $chapterNumber . ' ' . htmlspecialchars($db_data['title']);
 	$id = $db_data['id'];
 
 	ob_start();
@@ -83,12 +83,12 @@ else
 	?>
 
 	<p class="noComments">L'épisode est introuvable</p>
-	</main>
 
 	<?php
 }
 
 ?>
+	</main>
 
 
 <footer>
