@@ -468,6 +468,16 @@ main a
 	font-style: italic;
 	font-weight: 800;
 }
+#error
+{
+	width: 100%;
+	margin-top: 15px;
+	text-align: center;
+	color: #006494;
+	font-family: 'Karla', sans-serif;
+	padding: 5px;
+	background-color: rgba(36, 123, 160, 0.2);
+}
 @media all and (max-width: 900px)
 {
 	header
