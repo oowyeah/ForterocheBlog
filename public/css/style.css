@@ -412,7 +412,7 @@ main a
 #message
 {
 	width: 100%;
-	margin-top: 5px;
+	margin-top: 15px;
 	text-align: center;
 	color: #006494;
 	font-family: 'Karla', sans-serif;
@@ -426,6 +426,7 @@ main a
 	background-image: url('../img/book.jpg');
 	background-position: center center;
 	background-size: cover;
+	background-attachment: fixed;
 	width: 100%;
 	height: 400px;
 	display: flex;
