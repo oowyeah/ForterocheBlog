@@ -6,7 +6,8 @@ class CommentsManager extends Manager
 	public function getReportedComments()
 	{
 		$db = $this->dbConnect();
-		$req = $db->query('	SELECT c.id comment_Id, c.userId, c.date, c.content, c.reported, u.id, u.userName
+		$req = $db->query('	SELECT c.id comment_Id, c.userId, DATE_FORMAT(c.date,
+							\'%d/%m/%Y\') AS date, c.content, c.reported, u.id, u.userName
 							FROM comments c
 							INNER JOIN users u
 							ON c.userId = u.id
@@ -33,7 +34,8 @@ class CommentsManager extends Manager
 	public function getLastComments($chapterId, $commentsNbr)
 	{
 		$db = $this->dbConnect();
-		$req = $db->prepare('	SELECT c.id commentId, c.userId, u.userName, c.chapterId, c.date, c.content
+		$req = $db->prepare('	SELECT c.id commentId, c.userId, u.userName, c.chapterId, DATE_FORMAT(c.date,
+								\'%d/%m/%Y\') AS date, c.content
 								FROM comments c
 								INNER JOIN users u
 								ON c.userId = u.id
@@ -45,7 +47,8 @@ class CommentsManager extends Manager
 	public function getComments($chapterId)
 	{
 		$db = $this->dbConnect();
-		$req = $db->prepare('	SELECT c.id commentId, c.userId, u.userName, c.chapterId, c.date, c.content
+		$req = $db->prepare('	SELECT c.id commentId, c.userId, u.userName, c.chapterId, DATE_FORMAT(c.date,
+								\'%d/%m/%Y\') AS date, c.content
 								FROM comments c
 								INNER JOIN users u
 								ON c.userId = u.id

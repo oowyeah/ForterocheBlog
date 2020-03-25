@@ -20,7 +20,8 @@ class ChaptersManager extends Manager
 	public function getChapter($chapterId)
 	{
 		$db = $this->dbConnect();
-		$req = $db->prepare('	SELECT id, title, content, date FROM chapters
+		$req = $db->prepare('	SELECT id, title, content, DATE_FORMAT(date,
+								\'%d/%m/%Y\') AS date FROM chapters
 								WHERE id = ?');
 		$req->execute(array($chapterId));
 		return $req;
