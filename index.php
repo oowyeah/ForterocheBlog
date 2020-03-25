@@ -42,16 +42,23 @@ try {
 		}
 		elseif($_GET['action'] == "signUp")
 		{
-			if(isset($_POST['username']) && isset($_POST['password']))
+			if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['passwordCheck']))
 			{
-				if(!empty($_POST['username']) && !empty($_POST['password']))
+				if(!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['passwordCheck']))
 				{
-					$postData = array(
-						'username' => $_POST['username'],
-						'password' => $_POST['password']
-					);
+					if($_POST['password'] == $_POST['passwordCheck'])
+					{
+						$postData = array(
+							'username' => $_POST['username'],
+							'password' => $_POST['password']
+						);
 
-					signUp($postData);
+						signUp($postData);
+					}
+					else
+					{
+						throw new Exception("Les mots de passe ne correspondent pas !");
+					}
 				}
 				else
 				{
