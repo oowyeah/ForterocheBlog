@@ -11,7 +11,7 @@ ob_start();
 		?>
 
 		<form id="signUpForm" method="post" action="index.php?action=signUp">
-			<p><label for="username">Utilisateur : </label><input type="text" id="username" name="username"></p>
+			<p><label for="username">Utilisateur : </label><input autofocus type="text" id="username" name="username"></p>
 			<p><label for="password">Mot de passe : </label><input type="password" id="password" name="password"></p>
 			<p><label for="passwordCheck">Confirmer : </label><input type="password" id="passwordCheck" name="passwordCheck"></p>
 			<p><input type="submit" value="Inscription"></p>
