@@ -499,7 +499,8 @@ main a
 	}
 	.chapter
 	{
-		width: auto;
+		width: 100%;
+		box-sizing: border-box;
 	}
 	main .chapterContent
 	{
@@ -520,6 +521,15 @@ main a
 	#commentForm
 	{
 		width: 100%;
+	}
+	#fieldsetDiv
+	{
+		flex-direction: column;
+	}
+	#commentForm input
+	{
+		margin: 0;
+		margin-top: 10px;
 	}
 	#reportedComments
 	{
