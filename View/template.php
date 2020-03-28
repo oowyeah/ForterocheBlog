@@ -6,7 +6,7 @@
         <link href="https://fonts.googleapis.com/css?family=Karla:700%7CMartel&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="public/css/style.css">
-        <script src="https://kit.fontawesome.com/da9bf5bde4.js" crossorigin="anonymous"></script>
+        <script src="public/fontawesome/js/all.js"></script>
         <?php
         if(isset($headContent)) {
         	echo $headContent;
