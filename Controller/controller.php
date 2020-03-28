@@ -209,13 +209,13 @@ function updateChapter($postData)
 	if($whoIsConnected == "admin")
 	{
 		$addedLines = $chaptersManager->UpdateChapter($postData);
-		if($addedLines->rowCount())
+		if($addedLines)
 		{
 			header('Location: index.php?action=editRemChapters&message=4');
 		}
 		else
 		{
-			throw new Exception("Il y a eu un problème lors de la modification du chapitre ! Ou vous n'avez pas modifié le chapitre !");
+			throw new Exception("Il y a eu un problème lors de la modification du chapitre !");
 		}
 	}
 	else
@@ -411,7 +411,7 @@ function reportComment($commentId, $from)
 	if($whoIsConnected == "admin" || $whoIsConnected == "user")
 	{
 		$reportedComment = $commentsManager->updateStatus($commentId, 1);
-		if($reportedComment->rowCount())
+		if($reportedComment)
 		{
 			if($from == "chapterView")
 			{
@@ -424,7 +424,7 @@ function reportComment($commentId, $from)
 		}
 		else
 		{
-			throw new Exception("Il y a eu un problème lors du signalement, il a peut être déjà été signalé !");
+			throw new Exception("Il y a eu un problème lors du signalement !");
 		}
 	}
 	else

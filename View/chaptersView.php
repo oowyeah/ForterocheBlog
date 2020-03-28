@@ -42,7 +42,7 @@ ob_start();
 					else
 					{
 						?>
-						<?= $db_data['content'] ?>
+						<?= strip_tags($db_data['content']) . " (...)" ?>
 						<?php
 					}
 					?>
